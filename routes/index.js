@@ -3,37 +3,6 @@ var router     = express.Router();
 var path       = require('path');
 var fs         = require('fs');
 var WrapStream = require('../lib/WrapStream');
-//var DataStore = require('../lib/DataStore');
-//var Readable = require('stream').Readable;
-//var appCache = {};
-
-/*router.get(/^\/(\w+)\/(\S+)$/,function(req, res, next){
-			var appData,
-			appName = req.params[0],
-			key     = req.params[1];
-			if(appCache.hasOwnProperty(appName)){
-				appData = appCache[appName];
-			}else{
-				appData           = DataStore(appName);
-				appCache[appName] = appData;
-			}
-			
-			if(key){
-				appData.getData(key, function(err, data){
-					var form    = Readable();
-					if(err){
-						form.push('{"success":false,"msg":"请求数据不存在！","data":""}');
-					}else{
-						form.push('{"success":false,"msg":"请求数据不存在！","data":');
-						form.push(data);
-						form.push('\n}');
-					}
-
-					form.push(null);
-					form.pipe(res);
-				});
-			}
-		});*/
 
 
 router.get(/^\/(\w+)\/(\S+)$/,function(req, res, next){
