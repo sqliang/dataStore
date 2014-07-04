@@ -1,0 +1,20 @@
+{
+  "name": "dataServer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "set PORT=8111 && node ./bin/www",
+    "test" : "mocha ./test/WrapStream.js" 
+  },
+  "dependencies": {
+    "express":       "~4.2.0",
+    "morgan":        "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser":   "~1.0.0",
+    "debug":         "~0.7.4"
+  },
+  "devDependencies": {
+    "request": "^2.36.0",
+    "should":  "^4.0.4"
+  }
+}
