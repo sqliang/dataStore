@@ -8,54 +8,41 @@
 	<meta name="keywords" content="">
 	<link href="" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/resources/stylesheets/bootstrap.css">
-	<!-- <link href="./resources/stylesheets/homeMain.css" rel="stylesheet"> -->
+	<link href="./resources/stylesheets/homeMain.css" rel="stylesheet">
 	<script data-main="/resources/global" data-require="javascripts/homeMain" src="/resources/require.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="span12">
-			<h3>前端项目模拟数据提交.</h3>
-			<form class="form-horizontal">
-				<fieldset>
-					<div id="legend" class="">
-						<legend class="">表单名</legend>
-					</div>
-					<div class="control-group">
-
-						<!-- Text input-->
-						<label class="control-label" for="appName">项目名</label>
-						<div class="controls">
-							<input type="text" name="appName" placeholder="请输入项目名" class="input-xlarge">
-							<p class="help-block">项目名</p>
-						</div>
-					</div>
-					<div class="control-group">
-
-						<!-- Text input-->
-						<label class="control-label" for="dataPath">请求路径</label>
-						<div class="controls">
-							<input type="text" name="dataPath" placeholder="请输入路径" class="input-xlarge">
-							<p class="help-block">输入ajax 请求的url</p>
-						</div>
-					</div>
-
-					<div class="control-group">
-
-						<!-- Textarea -->
-						<label class="control-label">Data 数据</label>
-						<div class="controls">
-							<div class="textarea">
-								<textarea type="" name ="jsonData" class=""></textarea>
-							</div>
-						</div>
-					</div>
-
-				</fieldset>
-			</form>
+	<div class="container">
+		<div class="row">
+			<h3>
+				前端项目模拟数据提交.
+				<h6>(拖动文件到页面)</h6>
+			</h3>
 		</div>
-	</div>
-</div>
+		<div id="fileLists" class="panel">
+			<div class="row">
+				<button type="button" id = 'sendDataBtn' class="btn btn-success right">保存到数据服务器</button>
+			</div>
+			
+		</div>
 
+	</div>
+	<script id="dataTemplate" type="text/template">
+		<div class="col-md-3">
+			项目：
+			<span><%= appName %></span>
+		</div>
+
+		<div class="col-md-6">
+			路径：
+			<span><%= dataPath %></span>
+		</div>
+		<div class="col-md-3">
+			<button type="button" class="btn btn-primary inline itemDel">删除</button>
+			<h6>
+				<small class="info">准备.</small>
+			</h6>
+		</div>
+	</script>
 </body>
 </html>

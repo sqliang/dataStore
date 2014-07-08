@@ -62,14 +62,14 @@ require(["jquery"], function($) {
 	});
 });
 
-require(["underscore"], function(_) {
+/*require(["underscore"], function(_) {
 	_.templateSettings = {
 		interpolate: /\{\{=(.+?)\}\}/g,
 		evaluate : /\{\{(.+?)\}\}/g,
 		escape : /\{\{-(.+?)\}\}/g
 	};
 
-});
+});*/
 
 /*扩展 requirejs 功能：做onload模拟*/
 require([],function(){
