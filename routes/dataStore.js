@@ -1,35 +1,38 @@
 var express       = require('express');
 var router     = express.Router();
-var path       = require('path');
-var fs         = require('fs');
+//var path       = require('path');
+//var fs         = require('fs');
 //var WrapStream = require('../lib/WrapStream');
 var DataStore = require('../lib/DataStore');
 var appCache = {};
 
-router.get(/^\/(\w+)\/(\S+)$/,function(req, res, next){
-	console.log('-----------------');
-			var appData,
-			appName = req.params[0],
-			key     = req.params[1];
-			if(appCache.hasOwnProperty(appName)){
-				appData = appCache[appName];
-			}else{
-				appData           = DataStore(appName);
-				appCache[appName] = appData;
-			}
-			
-			if(key){
-				appData.getData(key, function(err, data){
-					if(err || data === null){
-						res.send(200,{"success":false,"msg":"请求数据不存在！","data":""});
-					}else{
-						data["success"]=true;
-						data["msg"]="请求数据成功！";
-						res.send(200, data);
-					}
+router.get(/^\/(\w+)\/(\S+)$/, function(req, res, next) {
+	var appData,
+		appName = req.params[0],
+		key     = req.params[1];
+	if (appCache.hasOwnProperty(appName)) {
+		appData = appCache[appName];
+	} else {
+		appData           = DataStore(appName);
+		appCache[appName] = appData;
+	}
+
+	if (key) {
+		appData.getData(key, function(err, data) {
+			if (err || data === null) {
+				res.send(200, {
+					"success": false,
+					"msg": "请求数据不存在！",
+					"data": ""
 				});
+			} else {
+				data["success"] = true;
+				data["msg"] = "请求数据成功！";
+				res.send(200, data);
 			}
 		});
+	}
+});
 
 
 /*router.get(/^\/(\w+)\/(\S+)$/,function(req, res, next){

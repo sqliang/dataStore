@@ -19,3 +19,4 @@ exports.index = router;
 exports.dataStore = require('./dataStore');
 
 exports.users = require('./users');
+exports.setData = require('./setData');

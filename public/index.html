@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>dataStore</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<link href="" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>dataStore</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/resources/stylesheets/bootstrap.css">
+	<!-- <link href="./resources/stylesheets/homeMain.css" rel="stylesheet"> -->
+	<script data-main="/resources/global" data-require="javascripts/homeMain" src="/resources/require.min.js"></script>
 </head>
 <body>
-    setData
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<h3>前端项目模拟数据提交.</h3>
+			<form class="form-horizontal">
+				<fieldset>
+					<div id="legend" class="">
+						<legend class="">表单名</legend>
+					</div>
+					<div class="control-group">
+
+						<!-- Text input-->
+						<label class="control-label" for="appName">项目名</label>
+						<div class="controls">
+							<input type="text" name="appName" placeholder="请输入项目名" class="input-xlarge">
+							<p class="help-block">项目名</p>
+						</div>
+					</div>
+					<div class="control-group">
+
+						<!-- Text input-->
+						<label class="control-label" for="dataPath">请求路径</label>
+						<div class="controls">
+							<input type="text" name="dataPath" placeholder="请输入路径" class="input-xlarge">
+							<p class="help-block">输入ajax 请求的url</p>
+						</div>
+					</div>
+
+					<div class="control-group">
+
+						<!-- Textarea -->
+						<label class="control-label">Data 数据</label>
+						<div class="controls">
+							<div class="textarea">
+								<textarea type="" name ="jsonData" class=""></textarea>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

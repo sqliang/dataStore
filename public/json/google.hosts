@@ -1,0 +1,17 @@
+203.208.46.146 www.google.com
+203.208.46.147 www.google.com.hk
+203.208.46.132 clients1.google.com
+203.208.46.149 mail.google.com
+203.208.46.161 chatenabled.mail.google.com
+203.208.46.161 mail-attachment.googleusercontent.com   #XP下的IE可能会有https错误证书提示，Vista以上或Firefox浏览器不会出现此现象
+203.208.46.146 id.google.com
+203.208.46.146 encrypted.google.com
+203.208.46.161 encrypted-tbn0.google.com
+203.208.46.162 encrypted-tbn1.google.com
+203.208.46.163 encrypted-tbn2.google.com
+203.208.46.164 encrypted-tbn3.google.com
+203.208.46.132 webcache.googleusercontent.com #XP下IE https连接可能会有证书错误提示
+203.208.46.191 ssl.gstatic.com
+203.208.46.161 docs.google.com
+203.208.46.157 0.docs.google.com
+203.208.46.157 1.docs.google.com
