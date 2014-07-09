@@ -27,7 +27,7 @@ describe('wrapStream test js', function() {
 		});
 	});
 	it('success get json', function(done) {
-		request('http://127.0.0.1:' + port + '/KS/companyInfo.json', function(err, res, body) {
+		request('http://127.0.0.1:' + port + '/KS/companyInfo', function(err, res, body) {
 			JSON.parse(body).should.have.properties({
 				"success":true,"msg":"请求数据成功！"
 			});
@@ -65,7 +65,7 @@ describe('app test js', function() {
 		});
 	});
 	it('success get json', function(done) {
-		request('http://127.0.0.1:' + port + '/api/KS/companyInfo.json', function(err, res, body) {
+		request('http://127.0.0.1:' + port + '/api/KS/companyInfo', function(err, res, body) {
 			JSON.parse(body).should.have.properties({
 				"success":true,"msg":"请求数据成功！"
 			});

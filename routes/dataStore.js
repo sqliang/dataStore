@@ -4,21 +4,12 @@ var router     = express.Router();
 //var fs         = require('fs');
 //var WrapStream = require('../lib/WrapStream');
 var DataStore = require('../lib/DataStore');
-var appCache = {};
 
-router.get(/^\/(\w+)\/(\S+)$/, function(req, res, next) {
-	var appData,
-		appName = req.params[0],
+router.get(/^\/([^\/]+)\/(\S+)$/, function(req, res, next) {
+	var appName = req.params[0],
 		key     = req.params[1];
-	if (appCache.hasOwnProperty(appName)) {
-		appData = appCache[appName];
-	} else {
-		appData           = DataStore(appName);
-		appCache[appName] = appData;
-	}
-
 	if (key) {
-		appData.getData(key, function(err, data) {
+		DataStore.getData(appName, key, function(err, data) {
 			if (err || data === null) {
 				res.send(200, {
 					"success": false,

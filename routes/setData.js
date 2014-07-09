@@ -11,8 +11,20 @@ var DataStore = require('../lib/DataStore');
 var appCache = {};
 var Busboy = require('busboy');
 
-function saveData(res, appName, key, data) {
-	var appData;
+function parseName(filename) {
+	var path;
+	filename = filename.replace(/\.(json|txt|xml)$/,'').split('.');
+	path     = filename.splice(1)
+	path     = path.join('/');
+	filename = filename.concat(path);
+	path     = null;
+	return filename
+}
+
+function saveData(res, filename, data) {
+	var tName = parseName(filename),
+		appName  = tName[0],
+		key      = tName[1];
 	if(!appName){
 		return res.send(200,{
 					"success": false,
@@ -21,19 +33,12 @@ function saveData(res, appName, key, data) {
 				});
 	}
 	
-	if (appCache.hasOwnProperty(appName)) {
-		appData = appCache[appName];
-	} else {
-		appData = DataStore(appName);
-		appCache[appName] = appData;
-	}
-
 	if (key) {
 		try{
 			data = JSON.parse(data)
 		}catch(e){
 		}
-		appData.setData(key, data, function(err, data) {
+		DataStore.setData(appName, key, data, function(err, data) {
 			if (err || data === null) {
 				res.send(200, {
 					"success": false,
@@ -58,25 +63,12 @@ function saveData(res, appName, key, data) {
 	}
 }
 
-function parseName(filename) {
-	filename = filename.split('.');
-	var path = filename.splice(1)
-	path.pop()
-	path = path.join('/');
-	filename = filename.concat(path);
-	path = null;
-	return filename
-}
-
 router.post('/', function(req, res, next) {
 	var busboy = new Busboy({
 		headers: req.headers
 	});
 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-		var tName = parseName(filename),
-			appName = tName[0],
-			key = tName[1],
-			chunks = [],
+			var chunks = [],
 			len = 0;
 
 		console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
@@ -93,7 +85,7 @@ router.post('/', function(req, res, next) {
                 chunks[i].copy(buffer, pos);
                 pos += chunks[i].length;
             }
-			saveData.call(this, res, appName, key, buffer.toString());
+			saveData.call(this, res, filename, buffer.toString());
 			//res.send(200,buffer.toString());
 		});
 	});
